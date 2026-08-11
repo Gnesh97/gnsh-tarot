@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="tr" data-spreads="true">
+<head>
+    <meta charset="utf-8">
+    <title>Tarot</title>
+    <link rel="stylesheet" href="css/variables.css?v=2">
+    <link rel="stylesheet" href="css/layout.css?v=3">
+    <link rel="stylesheet" href="css/cards.css?v=4">
+    <link rel="stylesheet" href="css/animations.css?v=2">
+    <link rel="stylesheet" href="css/responsive.css?v=3">
+</head>
+<body class="hidden">
+    <div id="app">
+        <section id="screen-player-selection" class="screen" data-screen="player-selection" hidden>
+            <div class="panel spread-selection-panel">
+                <h1 id="player-selection-title" class="glow-title"></h1>
+                <div id="player-options" class="spread-options"></div>
+                <div class="button-row">
+                    <button id="btn-solo-player" class="btn btn-accept" type="button" hidden></button>
+                    <button id="btn-confirm-player" class="btn btn-accept" type="button" disabled></button>
+                    <button id="btn-cancel-player" class="btn btn-reject" type="button"></button>
+                </div>
+            </div>
+        </section>
+
+        <section id="screen-invitation" class="screen" data-screen="invitation" hidden>
+            <div class="panel invitation-panel">
+                <h1 id="invitation-title" class="glow-title"></h1>
+                <p id="invitation-body"></p>
+                <div class="button-row">
+                    <button id="btn-accept-invite" class="btn btn-accept" type="button"></button>
+                    <button id="btn-reject-invite" class="btn btn-reject" type="button"></button>
+                </div>
+            </div>
+        </section>
+
+        <section id="screen-spread-selection" class="screen" data-screen="spread-selection" hidden>
+            <div class="panel spread-selection-panel">
+                <h1 id="spread-selection-title" class="glow-title"></h1>
+                <div id="spread-options" class="spread-options"></div>
+                <div class="button-row">
+                    <button id="btn-confirm-spread" class="btn btn-accept" type="button" disabled></button>
+                    <button id="btn-cancel-spread" class="btn btn-reject" type="button"></button>
+                </div>
+            </div>
+        </section>
+
+        <section id="screen-spread-waiting" class="screen" data-screen="spread-waiting" hidden>
+            <div class="panel spread-waiting-panel">
+                <h1 class="glow-title">Tarot</h1>
+                <p id="spread-waiting-text"></p>
+                <div class="button-row">
+                    <button id="btn-close-waiting" class="btn btn-reject" type="button"></button>
+                </div>
+            </div>
+        </section>
+
+        <section id="screen-shuffle" class="screen" data-screen="shuffle" hidden>
+            <div class="panel shuffle-panel">
+                <h1 id="shuffle-spread-label" class="glow-title"></h1>
+                <div class="deck-stack" aria-hidden="true">
+                    <div class="deck-card deck-card-1"></div>
+                    <div class="deck-card deck-card-2"></div>
+                    <div class="deck-card deck-card-3"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="screen-reading" class="screen" data-screen="reading" hidden>
+            <div class="panel reading-panel">
+                <h1 id="reading-spread-label" class="glow-title"></h1>
+                <div id="reading-slots" class="slots"></div>
+                <div id="deal-deck" class="deal-deck" aria-hidden="true" hidden></div>
+                <p id="reading-status"></p>
+                <div class="button-row">
+                    <button id="btn-deal-cards" class="btn btn-accept" type="button" hidden></button>
+                    <button id="btn-reveal-next" class="btn btn-accept" type="button" hidden></button>
+                    <button id="btn-reveal-all" class="btn btn-accept" type="button" hidden></button>
+                    <button id="btn-close-session" class="btn btn-reject" type="button"></button>
+                </div>
+            </div>
+        </section>
+
+        <section id="screen-summary" class="screen" data-screen="summary" hidden>
+            <div class="panel summary-panel">
+                <h1 class="glow-title" id="summary-title"></h1>
+                <div id="summary-slots" class="slots"></div>
+                <div class="button-row">
+                    <button id="btn-close-summary" class="btn btn-accept" type="button"></button>
+                </div>
+            </div>
+        </section>
+
+        <section id="screen-closing" class="screen" data-screen="closing" hidden>
+            <div class="panel closing-panel">
+                <p id="closing-text"></p>
+            </div>
+        </section>
+    </div>
+
+    <aside id="card-details" class="card-details" hidden>
+        <button id="btn-close-details" class="details-close" type="button" aria-label="Kapat">×</button>
+        <h2 id="card-details-title"></h2>
+        <p id="card-details-position"></p>
+        <p id="card-details-orientation"></p>
+        <p id="card-details-meaning"></p>
+        <p id="card-details-description"></p>
+    </aside>
+
+    <div id="card-zoom-overlay" class="card-zoom-overlay">
+        <div class="card-zoom-frame">
+            <img id="card-zoom-image" alt="">
+            <div id="card-zoom-fallback" class="card-zoom-fallback"></div>
+            <div id="card-zoom-reversed-badge" class="card-zoom-reversed-badge" hidden></div>
+        </div>
+        <div id="card-zoom-name" class="card-zoom-name"></div>
+    </div>
+
+    <audio id="audio-shuffle" preload="none"></audio>
+    <audio id="audio-flip" preload="none"></audio>
+    <audio id="audio-complete" preload="none"></audio>
+
+    <script src="js/security.js?v=2"></script>
+    <script src="js/state.js?v=3"></script>
+    <script src="js/audio.js?v=2"></script>
+    <script src="js/cards.js?v=3"></script>
+    <script src="js/nui.js?v=2"></script>
+    <script src="js/drag.js?v=3"></script>
+    <script src="js/app.js?v=2"></script>
+    <audio id='audio-draw' preload='none'></audio>
+</body>
+</html>

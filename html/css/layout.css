@@ -1,0 +1,143 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    font-family: var(--tarot-font);
+    color: var(--tarot-text);
+    overflow: hidden;
+}
+
+body.hidden #app {
+    display: none;
+}
+
+#app {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.screen {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.screen[hidden] {
+    display: none;
+}
+
+.panel {
+    position: relative;
+    background: linear-gradient(160deg, var(--tarot-black-soft), var(--tarot-black));
+    border: 1px solid var(--tarot-purple);
+    border-radius: var(--tarot-radius);
+    box-shadow: var(--tarot-shadow);
+    padding: 32px 40px;
+    max-width: 720px;
+    width: 90%;
+    text-align: center;
+    cursor: grab;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+.panel:not(:hover):not(.is-dragging) {
+    /* Instant fade-out on mouse leave -- fade-in on hover (via the base
+       .panel transition above) is also instant. */
+    transition: opacity 0.2s ease;
+    opacity: 0.25;
+    touch-action: none;
+    user-select: none;
+}
+
+.panel.is-dragging {
+    cursor: grabbing;
+}
+
+.panel button,
+.panel a,
+.panel input,
+.panel select,
+.panel textarea {
+    user-select: auto;
+}
+
+.glow-title {
+    font-size: 28px;
+    color: var(--tarot-gold-bright);
+    text-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
+    margin-bottom: 16px;
+}
+
+.button-row {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.btn {
+    font-family: var(--tarot-font);
+    font-size: 16px;
+    padding: 10px 24px;
+    border-radius: 6px;
+    border: 1px solid var(--tarot-gold);
+    background: rgba(212, 175, 55, 0.08);
+    color: var(--tarot-text);
+    cursor: pointer;
+    transition: background 120ms ease, transform 120ms ease;
+}
+
+.btn:hover {
+    background: rgba(212, 175, 55, 0.2);
+    transform: translateY(-1px);
+}
+
+.btn-reject {
+    border-color: var(--tarot-danger);
+}
+
+.btn-reject:hover {
+    background: rgba(178, 58, 72, 0.2);
+}
+
+#reading-status {
+    margin-top: 16px;
+    color: var(--tarot-text-dim);
+    font-style: italic;
+}
+
+.reading-panel,
+.summary-panel,
+.spread-selection-panel {
+    width: min(1440px, 96vw);
+    max-width: 1440px;
+    max-height: calc(100vh - 24px);
+    overflow: hidden;
+}
+
+.spread-selection-panel { overflow-y: auto; }
+
+@media (max-width: 900px) {
+    .reading-panel,
+    .summary-panel,
+    .spread-selection-panel { padding: 22px 16px; }
+    .spread-board { --board-w: 100%; --board-h: clamp(300px, calc(100vh - 270px), 560px); }
+}
+
+@media (max-width: 620px) {
+    .spread-board { --board-h: clamp(260px, calc(100vh - 240px), 460px); }
+    .card-details { right: 10px; left: 10px; top: auto; bottom: 10px; width: auto; transform: none; max-height: 35vh; }
+    .button-row { flex-wrap: wrap; }
+}

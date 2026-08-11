@@ -1,0 +1,20 @@
+:root {
+    --tarot-black: #0a0710;
+    --tarot-black-soft: #14101f;
+    --tarot-purple: #3d2260;
+    --tarot-purple-bright: #7b3ff2;
+    --tarot-gold: #d4af37;
+    --tarot-gold-bright: #f4d371;
+    --tarot-text: #ede6f7;
+    --tarot-text-dim: #b6a9d1;
+    --tarot-danger: #b23a48;
+
+    --tarot-font: 'Georgia', 'Times New Roman', serif;
+    --tarot-radius: 10px;
+    --tarot-shadow: 0 0 24px rgba(123, 63, 242, 0.35);
+
+    /* Card frame box shape (width / height). Declared globally, not just on
+       .spread-board, so #card-zoom-overlay -- which lives outside the board
+       and can't inherit a var scoped to it -- picks up the same value. */
+    --card-aspect: 2 / 3.40;
+}
