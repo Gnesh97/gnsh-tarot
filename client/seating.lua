@@ -110,7 +110,3 @@ end)
 RegisterNetEvent('tarot:client:sessionClosed', function()
     TarotSeating.StandUp()
 end)
-
-RegisterNetEvent('tarot:client:sessionCompleted', function()
-    TarotSeating.StandUp()
-end)

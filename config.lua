@@ -113,7 +113,7 @@ Config.TableHeadingTolerance = 15.0
 -- CARD / DECK RULES
 -- =============================================================================
 
-Config.ReversedChance = 50             -- percent chance a revealed card is reversed
+Config.ReversedChance = 20             -- percent chance a revealed card is reversed
 Config.PreventDuplicateCards = true    -- same card cannot appear twice in one spread
 -- Reveal order is configured per spread via revealMode. Set ForceSequentialReveal
 -- to true above to override all spread-specific modes.

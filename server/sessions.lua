@@ -112,6 +112,7 @@ function Sessions.SetSpread(session, spreadType)
     session.spreadType = spreadType
     local spread = Config.Spreads[spreadType]
     session.deck = Deck.Build()
+    session.drawnCardIds = {}
     session.slots = {}
 
     local slotCount = 0
@@ -131,13 +132,21 @@ function Sessions.RevealSlot(session, slotIndex)
     if session == nil or session.state ~= SessionStates.READING then
         return false
     end
-    local drawn = Deck.DrawAt(session, slotIndex)
-    if drawn == nil then return false end
-    if session.slots[slotIndex] == nil or session.slots[slotIndex].revealed then return false end
 
-    session.slots[slotIndex].revealed = true
-    session.slots[slotIndex].cardId = drawn.cardId
-    session.slots[slotIndex].orientation = drawn.orientation
+    local slot = session.slots[slotIndex]
+    if slot == nil or slot.revealed then return false end
+
+    local drawn = Deck.DrawAt(session, slotIndex)
+    if drawn == nil or drawn.cardId == nil then return false end
+
+    local drawnCardIds = session.drawnCardIds or {}
+    if drawnCardIds[drawn.cardId] then return false end
+
+    slot.revealed = true
+    slot.cardId = drawn.cardId
+    slot.orientation = drawn.orientation
+    drawnCardIds[drawn.cardId] = true
+    session.drawnCardIds = drawnCardIds
 
     Sessions.Touch(session)
     return true

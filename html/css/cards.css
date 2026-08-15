@@ -236,8 +236,8 @@
        wider than the panel and get clipped by its overflow:hidden. */
     --board-w: min(100%, 1340px);
     --board-h: clamp(340px, calc(100vh - 310px), 820px);
-    /* Fixed card width -- edit this number by hand, restart, and eyeball it. */
-    --slot-w: 220px;
+    /* Keep card width bounded by both the board width and its vertical space. */
+    --slot-w: min(calc(var(--board-w) / 6), calc(var(--board-h) * 0.42));
     /* --card-aspect lives in variables.css (:root) now, not here -- the zoom
        overlay is outside .spread-board and needs the global value too. */
     position: relative;
@@ -377,7 +377,11 @@
 .spread-board[data-spread="celtic_cross"] .slot[data-slot-id="9"],
 .spread-board[data-spread="celtic_cross"] .slot[data-slot-id="10"] {
     display: grid;
-    grid-template-columns: auto minmax(90px, 160px);
+    /* Resolve the card column from the slot's board-relative width. Using an
+       auto column here makes --slot-w resolve against the column itself,
+       collapsing the card frame to 0px. */
+    grid-template-columns: minmax(0, 1fr) minmax(90px, 160px);
+    grid-template-rows: auto auto auto auto;
     grid-template-areas:
         "frame number"
         "frame label"
@@ -385,7 +389,7 @@
         "frame meaning";
     align-items: center;
     column-gap: 10px;
-    width: max-content;
+    width: calc(var(--slot-w) + 170px);
 }
 
 .spread-board[data-spread="celtic_cross"] .slot[data-slot-id="7"] .card-slot-frame,
@@ -393,7 +397,7 @@
 .spread-board[data-spread="celtic_cross"] .slot[data-slot-id="9"] .card-slot-frame,
 .spread-board[data-spread="celtic_cross"] .slot[data-slot-id="10"] .card-slot-frame {
     grid-area: frame;
-    width: var(--slot-w);
+    width: 100%;
 }
 
 .spread-board[data-spread="celtic_cross"] .slot[data-slot-id="7"] .slot-number,
