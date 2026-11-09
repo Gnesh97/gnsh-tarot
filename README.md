@@ -1,5 +1,8 @@
 # Universal Tarot Reading System
 
+[![Validate FiveM resource](https://github.com/Gnesh97/gnsh-tarot/actions/workflows/validate.yml/badge.svg)](https://github.com/Gnesh97/gnsh-tarot/actions/workflows/validate.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 ## Synchronized Social RP for FiveM
 
 Universal Tarot Reading System adds a complete, cinematic tarot-reading
@@ -340,7 +343,7 @@ setup, then complete the live matrix in
 
 ## Ownership and licensing
 
-See [LICENSE](LICENSE) and review the license terms of any card art, fonts,
+Licensed under the [MIT License](LICENSE). Review the license terms of any card art, fonts,
 audio or third-party assets before commercial deployment. The resource's
 default behavior is intentionally safe for RP: readings are immersive,
 synchronized and non-mechanical.
